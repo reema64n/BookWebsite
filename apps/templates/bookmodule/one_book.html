@@ -1,0 +1,18 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block title %}One Book{% endblock %}
+
+{% block content %}
+
+<h1>Internet & World Wide Web How to Program</h1>
+
+<img src="{% static 'book1.jpg' %}"
+     alt="Internet & World Wide Web How to Program"
+     width="200">
+
+<p>
+    This book provides an introduction to the Internet and World Wide Web.
+</p>
+
+{% endblock %}

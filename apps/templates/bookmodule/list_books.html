@@ -1,0 +1,61 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block title %}List Books{% endblock %}
+
+{% block stylesheets %}
+<style>
+    h1 {
+        color: green;
+    }
+
+    h2 {
+        color: lightskyblue;
+    }
+
+    p {
+        font-family: verdana;
+        font-size: 20px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<h1>List of Books</h1>
+
+<h2>Book 1</h2>
+
+<a href="{% url 'books.view_one_book' 1 %}">
+    <img src="{% static 'book1.jpg' %}"
+         alt="Internet & World Wide Web How to Program"
+         width="150">
+</a>
+
+<p>
+    <a href="{% url 'books.view_one_book' 1 %}">
+        Internet & World Wide Web How to Program
+    </a>
+</p>
+
+<h2>Book 2</h2>
+
+<img src="{% static 'book2.jpg' %}"
+     alt="C++ How to Program, Late Objects Version"
+     width="150">
+
+<p>
+    C++ How to Program, Late Objects Version
+</p>
+
+<h2>Book 3</h2>
+
+<img src="{% static 'book3.jpg' %}"
+     alt="Programming Book"
+     width="150">
+
+<p>
+    Programming Book
+</p>
+
+{% endblock %}
