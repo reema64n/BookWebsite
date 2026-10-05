@@ -1,0 +1,140 @@
+/* Lab 5 - HTML and CSS Part 2 */
+
+/* Task 1: Links and layout customization */
+.link-block {
+    display: block;
+    text-align: center;
+    padding: 24px;
+    font-size: 26px;
+    margin: 0;
+}
+
+#new-tab-link {
+    background-color: lightgreen;
+    color: red;
+}
+
+#same-tab-link {
+    background-color: #555;
+    color: yellow;
+}
+
+#active-link {
+    background-color: black;
+    color: white;
+}
+
+#new-tab-link:visited {
+    color: purple;
+}
+
+#new-tab-link:hover,
+#same-tab-link:hover,
+#active-link:hover {
+    color: orange;
+}
+
+#new-tab-link:active,
+#same-tab-link:active,
+#active-link:active {
+    color: red;
+}
+
+/* Task 2 */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    font-size: 28px;
+}
+
+body > h1 {
+    margin: 20px 10px;
+    padding: 16px;
+    background-color: #f4f4d8;
+    color: green;
+    font-family: Georgia, serif;
+    font-size: 42px;
+}
+
+/* Task 3 */
+.listing-title {
+    margin: 40px 10px 30px;
+    padding: 16px;
+    background-color: #5f9ea0;
+    color: white;
+    font-family: Georgia, serif;
+    font-size: 42px;
+}
+
+body > ul {
+    margin-left: 40px;
+    line-height: 1.05;
+}
+
+/* Task 4 */
+.fruit-table-wrapper {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.fruit-table-wrapper h2 {
+    margin: 0 auto 5px;
+    font-family: Georgia, serif;
+    font-size: 28px;
+}
+
+.fruit-table {
+    margin: 0 auto 30px;
+    border-collapse: separate;
+    border-spacing: 3px;
+    font-family: Georgia, serif;
+    font-size: 24px;
+}
+
+.fruit-table th,
+.fruit-table td {
+    border: 1px solid black;
+    padding: 2px 6px;
+}
+
+.camel-table-wrapper {
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.table-caption {
+    font-family: Georgia, serif;
+    font-size: 27px;
+    margin-bottom: 0;
+}
+
+.camel-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Georgia, serif;
+    font-size: 22px;
+}
+
+.camel-table th,
+.camel-table td {
+    border: 1px solid black;
+    padding: 6px;
+    text-align: center;
+}
+
+.desert-cell {
+    width: 30%;
+    padding: 0;
+}
+
+.desert-cell img {
+    width: 90%;
+    display: block;
+    margin: auto;
+}
+
+.camel-heading {
+    height: 160px;
+    font-size: 25px;
+}
