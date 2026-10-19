@@ -1,0 +1,39 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}Search Results{% endblock title %}
+
+{% block content %}
+<h2>Search Results</h2>
+
+<p>
+    Keyword:
+    <strong>{{ keyword }}</strong>
+</p>
+
+{% if books %}
+    <table class="table" style="width:100%; border-collapse:collapse;">
+        <thead>
+            <tr>
+                <th style="padding:10px; border:1px solid #ddd;">ID</th>
+                <th style="padding:10px; border:1px solid #ddd;">Title</th>
+                <th style="padding:10px; border:1px solid #ddd;">Author</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books %}
+            <tr>
+                <td style="padding:10px; border:1px solid #ddd;">{{ book.id }}</td>
+                <td style="padding:10px; border:1px solid #ddd;">{{ book.title }}</td>
+                <td style="padding:10px; border:1px solid #ddd;">{{ book.author }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No books found matching your search.</p>
+{% endif %}
+
+<p style="margin-top:20px;">
+    <a href="{% url 'search_books' %}">Back to Search</a>
+</p>
+{% endblock content %}

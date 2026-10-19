@@ -1,0 +1,95 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+
+{% block title %}Searching Page{% endblock title %}
+
+{% block stylesheets %}
+<style>
+    .searchForm {
+        margin-top: 20px;
+        padding: 24px;
+        max-width: 680px;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+    }
+
+    .searchForm .field-row {
+        margin-bottom: 18px;
+    }
+
+    .searchForm input[type="text"] {
+        padding: 10px;
+        width: min(100%, 360px);
+        margin-top: 6px;
+        border: 1px solid #bbb;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    .searchForm .options {
+        margin-top: 8px;
+    }
+
+    .searchForm .options label {
+        margin-right: 18px;
+    }
+
+    .searchForm button {
+        color: #fff;
+        background-color: #17a2b8;
+        border: none;
+        border-radius: 4px;
+        padding: 12px 24px;
+        text-align: center;
+        font-size: 16px;
+        margin-top: 4px;
+        cursor: pointer;
+        transition-duration: 0.3s;
+    }
+
+    .searchForm button:hover {
+        background-color: green;
+        color: white;
+    }
+</style>
+{% endblock stylesheets %}
+
+{% block content %}
+<h2>Search Books</h2>
+
+<form class="searchForm" method="post" action="{% url 'search_books' %}">
+    {% csrf_token %}
+
+    <div class="field-row">
+        <label for="keyword">Keywords:</label><br>
+        <input
+            id="keyword"
+            type="text"
+            name="keyword"
+            placeholder="Enter a keyword"
+            value="{{ keyword|default:'' }}"
+        >
+    </div>
+
+    <div class="field-row">
+        <label>Search in:</label>
+        <div class="options">
+            <label>
+                <input type="checkbox" name="option1" value="title"
+                       {% if search_title %}checked{% endif %}>
+                Title
+            </label>
+            <label>
+                <input type="checkbox" name="option2" value="author"
+                       {% if search_author %}checked{% endif %}>
+                Author
+            </label>
+        </div>
+    </div>
+
+    <button type="submit">
+        <i class="fa fa-search" aria-hidden="true"></i> Search
+    </button>
+</form>
+{% endblock content %}
