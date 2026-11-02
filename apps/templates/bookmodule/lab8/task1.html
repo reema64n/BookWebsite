@@ -1,0 +1,22 @@
+{% extends "bookmodule/lab8/base.html" %}
+{% block title %}Task 1 – Books with price <= 80{% endblock %}
+{% block content %}
+<h1>Task 1 – Books with price <= 80</h1>
+<p>Books whose price is less than or equal to 80.</p>
+{% if books %}
+<table>
+    <tr><th>ID</th><th>Title</th><th>Authors</th><th>Price</th><th>Edition</th></tr>
+    {% for book in books %}
+    <tr>
+        <td>{{ book.id }}</td>
+        <td>{{ book.title }}</td>
+        <td>{{ book.authors }}</td>
+        <td>{{ book.price }}</td>
+        <td>{{ book.edition }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p class="empty">No books match this condition in the current database.</p>
+{% endif %}
+{% endblock %}

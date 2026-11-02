@@ -1,0 +1,11 @@
+{% extends "bookmodule/lab8/base.html" %}
+{% block title %}Task 5 – Aggregation{% endblock %}
+{% block content %}
+<h1>Task 5 – Aggregation Functions</h1>
+<p>Summary of the books in the database:</p>
+<div class="stat">Number of books: <strong>{{ result.number_of_books|default:0 }}</strong></div>
+<div class="stat">Total price: <strong>{{ result.total_price|default:0 }}</strong></div>
+<div class="stat">Average price: <strong>{{ result.average_price|default:0|floatformat:2 }}</strong></div>
+<div class="stat">Maximum price: <strong>{{ result.maximum_price|default:0 }}</strong></div>
+<div class="stat">Minimum price: <strong>{{ result.minimum_price|default:0 }}</strong></div>
+{% endblock %}

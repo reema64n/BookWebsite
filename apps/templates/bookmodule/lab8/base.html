@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Lab 8{% endblock %}</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 35px; background: #f5f7fa; color: #222; }
+        h1 { color: #25476a; }
+        .container { max-width: 900px; margin: auto; background: white; padding: 25px; border-radius: 10px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 18px; }
+        th, td { border: 1px solid #d8dee8; padding: 10px; text-align: left; }
+        th { background: #eaf0f6; }
+        .empty { padding: 15px; background: #fff4d6; border-radius: 6px; }
+        .back { display: inline-block; margin-top: 20px; color: #245b8f; }
+        .stat { padding: 12px; margin: 10px 0; background: #eef4fa; border-radius: 6px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    {% block content %}{% endblock %}
+    <a class="back" href="/books/">Back to Books</a>
+</div>
+</body>
+</html>
