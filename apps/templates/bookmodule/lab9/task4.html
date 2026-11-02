@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><title>Lab 9 - Task 4</title></head>
+<body>
+<h1>Task 4: Book Prices per Publisher</h1>
+<table border="1" cellpadding="8">
+<tr><th>Publisher</th><th>Average Price</th><th>Minimum Price</th><th>Maximum Price</th></tr>
+{% for publisher in publishers %}
+<tr>
+<td>{{ publisher.name }}</td>
+<td>{{ publisher.average_price|floatformat:2|default:"-" }}</td>
+<td>{{ publisher.minimum_price|default:"-" }}</td>
+<td>{{ publisher.maximum_price|default:"-" }}</td>
+</tr>
+{% empty %}<tr><td colspan="4">No publishers found.</td></tr>{% endfor %}
+</table>
+</body></html>
