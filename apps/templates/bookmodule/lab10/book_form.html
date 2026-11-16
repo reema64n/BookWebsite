@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page_title }}</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 35px; color: #222; max-width: 850px; }
+        form { margin-top: 20px; }
+        label { display: block; margin: 12px 0 5px; font-weight: bold; }
+        input, select { padding: 8px; min-width: 260px; max-width: 100%; }
+        select[multiple] { min-height: 110px; }
+        button { margin-top: 18px; padding: 9px 16px; background: #176b87; color: white; border: 0; border-radius: 5px; cursor: pointer; }
+        .errorlist, .errors { color: #b00020; }
+        .hint { color: #666; font-size: 13px; }
+    </style>
+</head>
+<body>
+    <h1>{{ page_title }}</h1>
+
+    {% if use_django_form %}
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Save</button>
+            <a href="{% url cancel_url_name %}">Cancel</a>
+        </form>
+    {% else %}
+        {% if errors %}
+            <div class="errors">
+                <strong>Please correct the following:</strong>
+                <ul>
+                    {% for error in errors %}<li>{{ error }}</li>{% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+
+            {% for field in raw_fields %}
+                <label for="id_{{ field.name }}">{{ field.label }}</label>
+                {% if field.type == "checkbox" %}
+                    <input id="id_{{ field.name }}" type="checkbox" name="{{ field.name }}" {% if field.checked %}checked{% endif %}>
+                {% else %}
+                    <input id="id_{{ field.name }}" type="{{ field.type }}" name="{{ field.name }}"
+                           value="{{ field.value }}" {% if field.required %}required{% endif %}
+                           {% if field.type == "number" %}step="any"{% endif %}>
+                {% endif %}
+            {% endfor %}
+
+            {% for field in foreign_fields %}
+                <label for="id_{{ field.name }}">{{ field.label }}</label>
+                <select id="id_{{ field.name }}" name="{{ field.name }}" {% if field.required %}required{% endif %}>
+                    <option value="">---------</option>
+                    {% for option in field.options %}
+                        <option value="{{ option.pk }}" {% if option.pk == field.selected %}selected{% endif %}>{{ option }}</option>
+                    {% endfor %}
+                </select>
+            {% endfor %}
+
+            {% for field in many_fields %}
+                <label for="id_{{ field.name }}">{{ field.label }}</label>
+                <select id="id_{{ field.name }}" name="{{ field.name }}" multiple>
+                    {% for option in field.options %}
+                        <option value="{{ option.pk }}" {% if option.pk in field.selected_ids %}selected{% endif %}>{{ option }}</option>
+                    {% endfor %}
+                </select>
+                <p class="hint">Hold Ctrl (Windows) or Command (Mac) to select more than one.</p>
+            {% endfor %}
+
+            <button type="submit">Save</button>
+            <a href="{% url cancel_url_name %}">Cancel</a>
+        </form>
+    {% endif %}
+</body>
+</html>

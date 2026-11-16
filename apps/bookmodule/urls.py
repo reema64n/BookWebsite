@@ -21,4 +21,5 @@ urlpatterns = [
     path('lab9/task4', views.lab9_task4, name='lab9_task4'),
     path('lab9/task5', views.lab9_task5, name='lab9_task5'),
     path('lab9/task6', views.lab9_task6, name='lab9_task6'),
+    path("", include("apps.bookmodule.lab10_urls")),
 ]

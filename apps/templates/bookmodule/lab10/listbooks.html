@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ heading }}</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 35px; color: #222; }
+        h1 { margin-bottom: 8px; }
+        a, button { cursor: pointer; }
+        .add { display: inline-block; margin: 16px 0; padding: 9px 14px; background: #176b87; color: white; text-decoration: none; border-radius: 5px; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+        th { background: #eef3f5; }
+        .actions a { margin-right: 10px; }
+        .switch { margin: 10px 0 18px; }
+    </style>
+</head>
+<body>
+    <h1>{{ heading }}</h1>
+    <div class="switch">
+        {% if part == "part1" %}
+            <a href="{% url 'lab10_part2_list' %}">Open Part 2 (with Django Forms)</a>
+        {% else %}
+            <a href="{% url 'lab10_part1_list' %}">Open Part 1 (without Django Forms)</a>
+        {% endif %}
+    </div>
+
+    <a class="add" href="{% url add_url_name %}">Add New Book</a>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Price</th>
+                <th>Edition</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books %}
+            <tr>
+                <td>{{ book.pk }}</td>
+                <td>{{ book.title }}</td>
+                <td>{{ book.author }}</td>
+                <td>{{ book.price }}</td>
+                <td>{{ book.edition }}</td>
+                <td class="actions">
+                    <a href="{% url edit_url_name book.pk %}">Edit</a>
+                    <a href="{% url delete_url_name book.pk %}">Delete</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="6">No books found. Use "Add New Book" to add one.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
